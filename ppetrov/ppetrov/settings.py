@@ -77,23 +77,23 @@ WSGI_APPLICATION = 'ppetrov.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'rso',
-#         'USER': 'test_user',
-#         'PASSWORD': 'test_user',
-#         'HOST': 'localhost',
-#         'PORT': '',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB', "test"),
+        'USER': os.environ.get('POSTGRES_USER', "test"),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', "test"),
+        'HOST': 'db',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation

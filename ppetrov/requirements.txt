@@ -1,3 +1,4 @@
 django==3.0.7
 djangorestframework==3.11.0
 r-django-jet==2.0.8
+psycopg2
