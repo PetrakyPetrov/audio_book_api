@@ -8,15 +8,12 @@ services:
             - POSTGRES_PASSWORD=postgres
     api:
         build: .
-        command: bash -c "python3 manage.py createsuperuser --noinput && python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+        command: ./run.sh
         volumes:
             - .:/api
         ports:
             - "8000:8000"
         environment:
-            - DJANGO_SUPERUSER_USERNAME=admin
-            - DJANGO_SUPERUSER_EMAIL=admin@admin.com
-            - DJANGO_SUPERUSER_PASSWORD=admin
             - POSTGRES_DB=postgres
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=postgres

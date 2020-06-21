@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from audio_book_api import views
 
 urlpatterns = [
+    path('api/books/', views.book_list),
+    path('api/books/<int:pk>/', views.book_detail),
+    path('api/search', views.Booksearch.as_view()),
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
